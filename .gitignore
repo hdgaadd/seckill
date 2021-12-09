@@ -1,0 +1,5 @@
+# Project exclude paths
+/cutedoudou/target/
+/system/target/
+/template/target/
+/util/target/
