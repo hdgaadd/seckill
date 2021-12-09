@@ -8,13 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="template" />
-        <module name="cutedoudou" />
         <module name="system" />
         <module name="util" />
+        <module name="repository" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cutedoudou" target="1.8" />
+      <module name="repository" target="8" />
       <module name="seckill" target="1.8" />
       <module name="system" target="8" />
       <module name="template" target="8" />
@@ -24,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cutedoudou" options="-parameters" />
+      <module name="repository" options="-parameters" />
       <module name="system" options="-parameters" />
       <module name="template" options="-parameters" />
       <module name="util" options="-parameters" />

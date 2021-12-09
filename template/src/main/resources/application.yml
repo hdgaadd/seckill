@@ -5,4 +5,6 @@ spring:
     password: root
 
 mybatis-plus:
-  mapper-locations: classpath*:com/codeman/**/xml/*Mapper.xml
+  mapper-locations:
+    - classpath*:com/codeman/**/xml/*Mapper.xml
+    - classpath:mapper/*.xml
