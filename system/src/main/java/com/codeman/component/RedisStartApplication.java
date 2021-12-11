@@ -26,5 +26,6 @@ public class RedisStartApplication implements ApplicationRunner {
         for (SeckillActivity activity : seckillActivities) {
             redisService.setKey("stockId:" + activity.getId(), activity.getTotalStock());
         }
+        System.out.println("--------------------redis初始化成功--------------------------");
     }
 }

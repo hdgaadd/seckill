@@ -1,3 +1,5 @@
+package com.codeman;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,7 +12,7 @@ import java.util.Scanner;
 /**
  * Created by hdgaadd on 2021/12/06/18:25
  */
-public class MultiQueryGenerator {
+public class MapperMultiQueryGenerator {
 
     //项目包名
     static String Package = "com.codeman";
@@ -30,7 +32,7 @@ public class MultiQueryGenerator {
                 " * @author hdgaadd\n" +
                 " * Created on " + day + " " + time +"\n" +  "*/\n";
 
-        MultiQueryGenerator auto = new MultiQueryGenerator();
+        MapperMultiQueryGenerator auto = new MapperMultiQueryGenerator();
         //获取所有数据表
         List<String> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);

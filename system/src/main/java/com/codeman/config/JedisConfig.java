@@ -17,17 +17,17 @@ import redis.clients.jedis.JedisPoolConfig;
 public class JedisConfig extends CachingConfigurerSupport {
     @Value("${spring.redis.host}")
     private String HOST;
-    @Value("${spring.redis.port")
+    @Value("${spring.redis.port}")
     private Integer PORT;
-    @Value("${spring.redis.timeout")
+    @Value("${spring.redis.timeout}")
     private Integer TIMEOUT;
-    @Value("${spring.redis.poll.max-active}")
+    @Value("${spring.redis.pool.max-active}")
     private Integer MAXACTIVE;
-    @Value("${spring.redis.poll.max-wait}")
+    @Value("${spring.redis.pool.max-wait}")
     private Long MAXWAIT;
-    @Value("${spring.redis.poll.max-idle}")
+    @Value("${spring.redis.pool.max-idle}")
     private Integer MAXIDLE;
-    @Value("${spring.redis.poll.min-idle}")
+    @Value("${spring.redis.pool.min-idle}")
     private Integer MINIDLE;
 
 
