@@ -46,6 +46,7 @@ public class RedisService {
                     "return -1;";
             Long stock = (Long) jedisClient.eval(script, Collections.singletonList(key), Collections.emptyList());
             if (stock < 0) {
+                System.out.println("--------------------------------库存不足----------------------------");
                 return false;
             }
             System.out.println("--------------------第"+ accessCount++ +"次：purchase succeed--------------------------");
