@@ -13,6 +13,11 @@ spring:
       max-idle: 8
       min-idle: 0
     timeout: 0
+    rocketmq:
+      name-server: localhost:9876
+      producter:
+        group: my-group
+
 
 
 mybatis-plus:

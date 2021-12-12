@@ -30,7 +30,7 @@ public class MapperMultiQueryGenerator {
         time = str[1].substring(0, 8);
         template ="/**\n" +
                 " * @author hdgaadd\n" +
-                " * Created on " + day + " " + time +"\n" +  "*/\n";
+                " * Created on " + day +"\n" +  "*/\n";
 
         MapperMultiQueryGenerator auto = new MapperMultiQueryGenerator();
         //获取所有数据表

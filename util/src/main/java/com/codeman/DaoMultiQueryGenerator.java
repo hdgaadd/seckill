@@ -30,7 +30,7 @@ public class DaoMultiQueryGenerator {
         time = str[1].substring(0, 8);
         template ="/**\n" +
                 " * @author hdgaadd\n" +
-                " * Created on " + day + " " + time +"\n" +  "*/\n";
+                " * Created on " + day +"\n" +  "*/\n";
 
         DaoMultiQueryGenerator auto = new DaoMultiQueryGenerator();
         //获取所有数据表

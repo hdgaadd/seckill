@@ -12,11 +12,13 @@
         <module name="util" />
         <module name="repository" />
         <module name="common" />
+        <module name="mq" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="8" />
       <module name="cutedoudou" target="1.8" />
+      <module name="mq" target="8" />
       <module name="repository" target="8" />
       <module name="seckill" target="1.8" />
       <module name="system" target="8" />
@@ -28,6 +30,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
       <module name="cutedoudou" options="-parameters" />
+      <module name="mq" options="-parameters" />
       <module name="repository" options="-parameters" />
       <module name="system" options="-parameters" />
       <module name="template" options="-parameters" />
