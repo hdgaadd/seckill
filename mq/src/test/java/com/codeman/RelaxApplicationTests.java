@@ -13,10 +13,11 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class RelaxApplicationTests {
 
-
+	@Resource
+	private RocketMQService rocketMQService;
 
 	@Test
 	public void test() throws Exception {
-		System.out.println("dfd");
+		rocketMQService.sendMessage("testTopic", "测试消息");
 	}
 }

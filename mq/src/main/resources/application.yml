@@ -3,10 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/project_learning?characterEncoding=utf-8&serverTimezone=GMT%2B8
     username: root
     password: root
-  rocketmq:
-    name-server: localhost:9876
-    producter:
-      group: my-group
+
 
 
 mybatis-plus:
@@ -14,3 +11,10 @@ mybatis-plus:
     - classpath*:com/codeman/**/xml/*Mapper.xml
     - classpath:mapper/*.xml
     - classpath:dao/*.xml
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: my-group
+
+

@@ -16,7 +16,7 @@ public class Listener implements RocketMQListener<MessageExt> {
     public void onMessage(MessageExt messageExt) {
         try {
             String message = new String(messageExt.getBody(), "UTF-8");
-            System.out.println("-------------------------接收到消息----------------------------：" + message);
+            System.out.println("接收到消息：" + message);
         } catch (Exception e) {
             e.printStackTrace();
         }
