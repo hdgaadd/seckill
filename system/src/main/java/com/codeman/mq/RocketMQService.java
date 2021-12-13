@@ -15,15 +15,13 @@ public class RocketMQService {
     private RocketMQTemplate rocketMQTemplate;
 
     public void sendMessage(String topic, String messageBody) throws Exception {
-        Message message = new Message();
-        message.setBody(messageBody.getBytes());
+        Message message = new Message(topic, messageBody.getBytes());
         rocketMQTemplate.getProducer().send(message);
     }
 
-    public void sendMessage(String topic, String messageBody, int format) throws Exception {
-        Message message = new Message();
-        message.setDelayTimeLevel(format);
-        message.setBody(messageBody.getBytes());
+    public void sendMessage(String topic, String messageBody, int delayTimeLevel) throws Exception {
+        Message message = new Message(topic, messageBody.getBytes());
+        message.setDelayTimeLevel(delayTimeLevel);
         rocketMQTemplate.getProducer().send(message);
     }
 }

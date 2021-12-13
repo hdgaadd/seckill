@@ -49,11 +49,19 @@ public class RedisService {
                 System.out.println("--------------------------------库存不足----------------------------");
                 return false;
             }
-            System.out.println("--------------------第"+ accessCount++ +"次：purchase succeed--------------------------");
+            System.out.println("--------------------秒杀请求为第"+ accessCount++ +"次：purchase succeed--------------------------");
             return true;
         } catch (Throwable throwable) {
             System.out.println("error" + throwable.toString());
             return false;
         }
+    }
+
+    public Boolean addLimitUser(Long seckillActivityId, Long userId) {
+        Jedis resource = jedisPool.getResource();
+        resource.set("limitUser:" + seckillActivityId,  String.valueOf(userId));
+        System.out.println("--------------限选用户Id为---------------：" + resource.get("limitUser:" + seckillActivityId));
+        resource.close();
+        return true;
     }
 }

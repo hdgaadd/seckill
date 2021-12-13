@@ -89,9 +89,7 @@ public class DaoMultiQueryGenerator {
      */
     private static String createDao(String tableName) {
         String service = "package "+Package+".dao;\n\n" +
-                "import org.apache.ibatis.annotations.Mapper;\n" +
-                "\n"  + template +
-                "@Mapper\n" +
+                template +
                 "public interface "+tableName+"Dao {\n" +
 
                 "}";
