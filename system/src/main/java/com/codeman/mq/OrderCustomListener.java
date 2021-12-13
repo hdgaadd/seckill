@@ -21,7 +21,7 @@ import javax.annotation.Resource;
  */
 @Component
 @RocketMQMessageListener(topic = "createOrder", consumerGroup = "testGroup")
-public class Listener implements RocketMQListener<MessageExt> {
+public class OrderCustomListener implements RocketMQListener<MessageExt> {
     @Resource
     private SeckillOrderMapper seckillOrderMapper;
     @Resource
