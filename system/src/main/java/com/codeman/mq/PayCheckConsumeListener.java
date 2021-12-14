@@ -1,10 +1,12 @@
 package com.codeman.mq;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.codeman.component.RedisService;
 import com.codeman.domain.SeckillActivity;
 import com.codeman.domain.SeckillOrder;
 import com.codeman.mapper.SeckillActivityMapper;
+import com.codeman.mapper.SeckillOrderMapper;
 import com.codeman.service.RocketmqService;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
@@ -29,13 +31,19 @@ public class PayCheckConsumeListener implements RocketMQListener<MessageExt> {
     private RocketmqService rocketmqService;
     @Resource
     private RedisService redisService;
+    @Resource
+    protected SeckillOrderMapper seckillOrderMapper;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void onMessage(MessageExt messageExt) {
         try {
+            LOG.log("检查订单支付状态开始");
             String message = new String(messageExt.getBody(), StandardCharsets.UTF_8);
-            SeckillOrder order = JSON.parseObject(message, SeckillOrder.class);
+            SeckillOrder oldOrder = JSON.parseObject(message, SeckillOrder.class);
+            // 根据先前的订单编号，获取此时最新的该订单，或许该订单已经支付更新状态了
+            SeckillOrder order = seckillOrderMapper.selectOne(new QueryWrapper<SeckillOrder>().eq("code", oldOrder.getCode()));
+            LOG.log("订单的状态为", order.getOrderStatus());
             if (order.getOrderStatus() != 2) {
                 order.setOrderStatus(3);
                 // 订单超时，更新数据库库存

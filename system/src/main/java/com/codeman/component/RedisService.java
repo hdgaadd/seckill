@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import util.LOG;
 
 import java.util.Collections;
 
@@ -78,6 +79,7 @@ public class RedisService {
     public void revertStock(SeckillOrder order) {
         Jedis resource = jedisPool.getResource();
         resource.incr("stock:"  + order.getSeckillActivityId());
+        LOG.log("恢复Redis库存成功");
         resource.close();
     }
 

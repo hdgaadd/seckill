@@ -30,7 +30,7 @@ public class SeckillOversellController {
         if (result) {
             orderCode = seckillOversellService.createOrder(activityId, userId);
         }
-        return orderCode != null ? "秒杀成功，订单编号为：" + orderCode : "秒杀失败，库存不再";
+        return orderCode != null ? "秒杀成功，订单编号为：" + orderCode : "秒杀失败，库存不足";
     }
 
 }
