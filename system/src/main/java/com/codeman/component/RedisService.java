@@ -10,6 +10,9 @@ import util.LOG;
 
 import java.util.Collections;
 
+import static com.codeman.constant.RedisKey.LIMITUSER;
+import static com.codeman.constant.RedisKey.STOCK;
+
 /**
  * @author hdgaadd
  * Created on 2021/12/10/00:34
@@ -41,7 +44,7 @@ public class RedisService {
      */
     public Boolean stockDeductVaildator(Long activityId) { // [dɪˈdʌkt]['vali,deitə]减去 验证器
         System.out.println("--------------------redis脚本执行--------------------------");
-        String key = "stock:" + activityId;
+        String key = STOCK.toString() + activityId;
         try (Jedis jedisClient = jedisPool.getResource()) {
             String script = "if redis.call('exists', KEYS[1]) == 1 then\n" +
                     "	local stock = tonumber(redis.call('get', KEYS[1]))\n" +
@@ -67,7 +70,7 @@ public class RedisService {
 
     public Boolean addLimitUser(Long seckillActivityId, Long userId) {
         Jedis resource = jedisPool.getResource();
-        resource.sadd("limitUser:" + seckillActivityId,  String.valueOf(userId));
+        resource.sadd(LIMITUSER.toString()  + seckillActivityId,  String.valueOf(userId));
         resource.close();
         return true;
     }
@@ -78,7 +81,7 @@ public class RedisService {
      */
     public void revertStock(SeckillOrder order) {
         Jedis resource = jedisPool.getResource();
-        resource.incr("stock:"  + order.getSeckillActivityId());
+        resource.incr(STOCK.toString()  + order.getSeckillActivityId());
         LOG.log("恢复Redis库存成功");
         resource.close();
     }
@@ -89,7 +92,7 @@ public class RedisService {
      */
     public void removeLimitMember(SeckillOrder order) {
         Jedis resource = jedisPool.getResource();
-        resource.srem("limitUser:" + order.getSeckillActivityId(), String.valueOf(order.getUserId()));
+        resource.srem(LIMITUSER.toString() + order.getSeckillActivityId(), String.valueOf(order.getUserId()));
         resource.close();
     }
 }

@@ -9,6 +9,7 @@ import com.codeman.mapper.SeckillOrderMapper;
 import com.codeman.component.RocketMQService;
 import com.codeman.service.SeckillActivityService;
 import org.springframework.stereotype.Service;
+import util.LOG;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -57,7 +58,7 @@ public class SeckillActivityServiceImpl implements SeckillActivityService {
         LocalDateTime time = currDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         seckillOrder.setPayTime(time);
         // 更新订单
-        seckillOrderMapper.update(seckillOrder, null);
+        seckillOrderMapper.updateById(seckillOrder);
         // 传输订单给消息接收者
         rocketMQService.sendMessage("payDone", JSON.toJSONString(seckillOrder));
         return "支付成功";

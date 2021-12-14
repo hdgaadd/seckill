@@ -9,6 +9,7 @@ import com.codeman.component.RocketMQService;
 import com.codeman.service.SeckillOversellService;
 import com.codeman.util.SnowFlake;
 import org.springframework.stereotype.Service;
+import util.LOG;
 
 import javax.annotation.Resource;
 import java.util.Random;
@@ -41,7 +42,9 @@ public class SeckillOversellServiceImpl implements SeckillOversellService {
         SeckillOrder seckillOrder = new SeckillOrder();
         // id使用雪花id
         Random random = new Random(100);
-        seckillOrder.setCode(String.valueOf(snowFlake.nextId() + random.nextInt(100)));
+        String code = String.valueOf(snowFlake.nextId() + random.nextInt(100));
+        seckillOrder.setCode(code);
+        LOG.log("订单编号为", code);
         seckillOrder.setUserId(userId);
         seckillOrder.setSeckillActivityId(activityId);
         seckillOrder.setCommodityId(activity.getCommodityId());
@@ -54,7 +57,7 @@ public class SeckillOversellServiceImpl implements SeckillOversellService {
 
     private Boolean sentRocketMQ(SeckillOrder seckillOrder) throws Exception {
         rocketMQService.sendMessage("createOrder", JSON.toJSONString(seckillOrder));
-        rocketMQService.sendMessage("pay_check", JSON.toJSONString(seckillOrder), 3);
+        rocketMQService.sendMessage("pay_check", JSON.toJSONString(seckillOrder), 4);
         return true;
     }
 }
