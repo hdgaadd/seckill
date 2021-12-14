@@ -1,5 +1,7 @@
 package com.codeman.component;
 
+import com.codeman.constant.RedisKey;
+import com.codeman.domain.SeckillOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
@@ -31,9 +33,14 @@ public class RedisService {
         return result;
     }
 
+    /**
+     * 通过Jedis连接池锁定库存
+     * @param activityId
+     * @return
+     */
     public Boolean stockDeductVaildator(Long activityId) { // [dɪˈdʌkt]['vali,deitə]减去 验证器
         System.out.println("--------------------redis脚本执行--------------------------");
-        String key = "stockId:" + activityId;
+        String key = "stock:" + activityId;
         try (Jedis jedisClient = jedisPool.getResource()) {
             String script = "if redis.call('exists', KEYS[1]) == 1 then\n" +
                     "	local stock = tonumber(redis.call('get', KEYS[1]))\n" +
@@ -59,9 +66,28 @@ public class RedisService {
 
     public Boolean addLimitUser(Long seckillActivityId, Long userId) {
         Jedis resource = jedisPool.getResource();
-        resource.set("limitUser:" + seckillActivityId,  String.valueOf(userId));
-        System.out.println("--------------限选用户Id为---------------：" + resource.get("limitUser:" + seckillActivityId));
+        resource.sadd("limitUser:" + seckillActivityId,  String.valueOf(userId));
         resource.close();
         return true;
+    }
+
+    /**
+     * 恢复Redis库存
+     * @param order
+     */
+    public void revertStock(SeckillOrder order) {
+        Jedis resource = jedisPool.getResource();
+        resource.incr("stock:"  + order.getSeckillActivityId());
+        resource.close();
+    }
+
+    /**
+     * 将用户从锁定状态解除
+     * @param order
+     */
+    public void removeLimitMember(SeckillOrder order) {
+        Jedis resource = jedisPool.getResource();
+        resource.srem("limitUser:" + order.getSeckillActivityId(), String.valueOf(order.getUserId()));
+        resource.close();
     }
 }

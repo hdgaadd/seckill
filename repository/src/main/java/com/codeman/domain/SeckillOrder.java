@@ -22,7 +22,7 @@ public class SeckillOrder implements Serializable {
 
     private Long id;
 
-    private Integer code;
+    private String code;
 
     private Long commodityId;
 

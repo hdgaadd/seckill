@@ -1,10 +1,12 @@
 package com.codeman.component;
 
+import com.codeman.constant.RedisKey;
 import com.codeman.domain.SeckillActivity;
 import com.codeman.mapper.SeckillActivityMapper;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+import util.LOG;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -24,8 +26,8 @@ public class RedisStartApplication implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         List<SeckillActivity> seckillActivities = seckillActivityMapper.selectList(null);
         for (SeckillActivity activity : seckillActivities) {
-            redisService.setKey("stockId:" + activity.getId(), activity.getTotalStock());
+            redisService.setKey("stock:" + activity.getId(), activity.getAvailableStock());
         }
-        System.out.println("--------------------redis初始化成功--------------------------");
+        LOG.log("redis初始化成功");
     }
 }

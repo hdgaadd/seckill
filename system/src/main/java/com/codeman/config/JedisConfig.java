@@ -1,7 +1,6 @@
 package com.codeman.config;
 
 
-import org.omg.PortableInterceptor.ACTIVE;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;

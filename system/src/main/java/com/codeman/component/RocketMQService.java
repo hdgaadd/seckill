@@ -1,4 +1,4 @@
-package com.codeman.mq;
+package com.codeman.component;
 
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
