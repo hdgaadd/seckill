@@ -27,7 +27,7 @@ public class SeckillActivityController {
     @GetMapping("/findActivity/{orderCode}")
     @ApiOperation("根据订单编号查询活动")
     public SeckillActivity getSeckillActivity(@PathVariable String orderCode) {
-        LOG.log("IDEA真牛逼😅");
+        LOG.log("IDEA20真牛逼😅, IDEA19yyds");
         SeckillActivity seckillActivity = seckillActivityService.getSeckillActivity(orderCode);
         return seckillActivity;
     }

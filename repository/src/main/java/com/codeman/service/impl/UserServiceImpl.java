@@ -1,6 +1,6 @@
 package com.codeman.service.impl;
 
-import com.codeman.domain.User;
+import com.codeman.domain.Member;
 import com.codeman.mapper.UserMapper;
 import com.codeman.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2021-12-09
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, Member> implements IUserService {
 
 }

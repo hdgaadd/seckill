@@ -1,6 +1,6 @@
 package com.codeman.mapper;
 
-import com.codeman.domain.User;
+import com.codeman.domain.Member;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author hdgaadd
  * @since 2021-12-09
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<Member> {
 
 }

@@ -1,6 +1,5 @@
 package com.codeman.component;
 
-import com.codeman.constant.RedisKey;
 import com.codeman.domain.SeckillOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,10 +67,17 @@ public class RedisService {
         }
     }
 
+    /**
+     * 把该活动id+用户id作为key，加入到Jedis连接池里，作为限选用户
+     * @param seckillActivityId
+     * @param userId
+     * @return
+     */
     public Boolean addLimitUser(Long seckillActivityId, Long userId) {
         Jedis resource = jedisPool.getResource();
         resource.sadd(LIMITUSER.toString()  + seckillActivityId,  String.valueOf(userId));
         resource.close();
+        LOG.log("添加限选用户成功");
         return true;
     }
 
@@ -93,6 +99,7 @@ public class RedisService {
     public void removeLimitMember(SeckillOrder order) {
         Jedis resource = jedisPool.getResource();
         resource.srem(LIMITUSER.toString() + order.getSeckillActivityId(), String.valueOf(order.getUserId()));
+        LOG.log("解除用户限选状态成功");
         resource.close();
     }
 }

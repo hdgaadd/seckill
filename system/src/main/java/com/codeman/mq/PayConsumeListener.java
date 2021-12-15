@@ -24,8 +24,6 @@ import java.nio.charset.StandardCharsets;
 @RocketMQMessageListener(topic = "payDone", consumerGroup = "payDoneGroup")
 public class PayConsumeListener implements RocketMQListener<MessageExt> {
     @Resource
-    private SeckillActivityMapper seckillActivityMapper;
-    @Resource
     private RocketmqService rocketmqService;
 
     @Override
@@ -43,5 +41,4 @@ public class PayConsumeListener implements RocketMQListener<MessageExt> {
             e.printStackTrace();
         }
     }
-
 }

@@ -10,7 +10,6 @@
         <module name="common" />
         <module name="system" />
         <module name="template" />
-        <module name="mq" />
         <module name="repository" />
         <module name="util" />
       </profile>

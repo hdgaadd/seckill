@@ -9,7 +9,6 @@
 		<module>repository</module>
 		<module>system</module>
         <module>common</module>
-		<module>mq</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

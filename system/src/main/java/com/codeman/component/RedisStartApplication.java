@@ -1,6 +1,5 @@
 package com.codeman.component;
 
-import com.codeman.constant.RedisKey;
 import com.codeman.domain.SeckillActivity;
 import com.codeman.mapper.SeckillActivityMapper;
 import org.springframework.boot.ApplicationArguments;

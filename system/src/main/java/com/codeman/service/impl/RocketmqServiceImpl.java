@@ -43,7 +43,7 @@ public class RocketmqServiceImpl implements RocketmqService {
         activity.setLockStock(activity.getLockStock() - 1);
         activity.setAvailableStock(activity.getAvailableStock() - 1);
         seckillActivityMapper.update(activity, null);
-        LOG.log("更新活动表成功");
+        LOG.log("更新活动表库存成功");
         return true;
     }
 }

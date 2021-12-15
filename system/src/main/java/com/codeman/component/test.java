@@ -9,7 +9,8 @@ import io.swagger.models.auth.In;
 public class test {
     public static void main(String[] args) {
         Integer status = null;
-        if (status != 2) {
+        Integer a = 2;
+        if (status != a) {
             System.out.println("sfj");
         }
     }

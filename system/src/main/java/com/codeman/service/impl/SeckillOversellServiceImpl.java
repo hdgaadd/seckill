@@ -36,6 +36,13 @@ public class SeckillOversellServiceImpl implements SeckillOversellService {
         return result;
     }
 
+    /**
+     * 秒杀成功后，创建订单
+     * @param activityId
+     * @param userId
+     * @return
+     * @throws Exception
+     */
     @Override
     public String createOrder(Long activityId, Long userId) throws Exception {
         SeckillActivity activity = seckillActivityMapper.selectById(activityId);
