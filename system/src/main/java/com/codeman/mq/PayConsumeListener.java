@@ -33,10 +33,7 @@ public class PayConsumeListener implements RocketMQListener<MessageExt> {
             String message = new String(messageExt.getBody(), StandardCharsets.UTF_8);
             SeckillOrder order = JSON.parseObject(message, SeckillOrder.class);
             // 支付成功，更新数据库库存
-            Boolean result = rocketmqService.updateActivity(order.getSeckillActivityId());
-            if (result) {
-                System.out.println("更新库存成功");
-            }
+            rocketmqService.deductStock(order.getSeckillActivityId()); // [dɪˈdʌkt]
         } catch (Exception e) {
             e.printStackTrace();
         }

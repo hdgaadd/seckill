@@ -14,7 +14,7 @@ import javax.annotation.Resource;
  * @author hdgaadd
  * Created on 2021/12/10 00:00:11
 */
-@Api(tags = "")
+@Api(tags = "秒杀")
 @RestController
 @RequestMapping("/")
 // oversale售空[ˌəʊvəˈsel]

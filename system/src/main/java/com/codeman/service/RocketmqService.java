@@ -26,5 +26,5 @@ public interface RocketmqService {
      * @param seckillActivityId
      * @return
      */
-    Boolean updateActivity(Long seckillActivityId);
+    void deductStock(Long seckillActivityId);
 }

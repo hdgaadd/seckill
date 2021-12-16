@@ -38,12 +38,11 @@ public class RocketmqServiceImpl implements RocketmqService {
     }
 
     @Override
-    public Boolean updateActivity(Long seckillActivityId) {
+    public void deductStock(Long seckillActivityId) {
         SeckillActivity activity = seckillActivityMapper.selectById(seckillActivityId);
         activity.setLockStock(activity.getLockStock() - 1);
         activity.setAvailableStock(activity.getAvailableStock() - 1);
         seckillActivityMapper.update(activity, null);
-        LOG.log("更新活动表库存成功");
-        return true;
+        LOG.log("支付成功，更新数据库库存");
     }
 }
