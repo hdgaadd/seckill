@@ -102,4 +102,16 @@ public class RedisService {
         LOG.log("解除用户限选状态成功");
         resource.close();
     }
+
+    /**
+     * 检查该用户是否为限选用户
+     * @param memberId
+     * @return
+     */
+    public Boolean isLimitMember(Long activityId, Long memberId) {
+        Jedis resource = jedisPool.getResource();
+        Boolean isLimit = resource.sismember(LIMITUSER.toString() + activityId, String.valueOf(memberId));
+        LOG.log("检查用户是否限选成功");
+        return isLimit;
+    }
 }

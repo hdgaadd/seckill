@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @author hdgaadd
  * Created on 2021/12/13
  */
-@Api(tags = "秒杀活动的各种操作")
+@Api(tags = "支付")
 @RestController
 @RequestMapping("/activity")
 public class SeckillActivityController {

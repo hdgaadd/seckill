@@ -1,5 +1,7 @@
 package com.codeman.service;
 
+import com.codeman.domain.Member;
+
 /**
  * @author hdgaadd
  * Created on 2021/12/10 00:00:11
@@ -10,7 +12,7 @@ public interface SeckillOversellService {
      * @param activityId
      * @return
      */
-    Boolean stockDeductVaildator(Long activityId);
+    Boolean stockDeductVaildator(Long activityId, Long memberId);
 
     /**
      * 秒杀成功后，创建订单

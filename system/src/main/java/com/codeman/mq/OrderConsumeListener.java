@@ -45,13 +45,13 @@ public class OrderConsumeListener implements RocketMQListener<MessageExt> {
             int result =  rocketmqService.updateOrder(order.getSeckillActivityId());
             if (result > 0) {
                 LOG.log("更新数据库，限定库存+1，可用库存-1成功");
+
+                seckillOrderMapper.insert(order);
+                LOG.log("创建订单成功");
+
                 // 把该活动id+用户id作为key，加入到Jedis连接池里，作为限选用户
                 Boolean ret =  redisService.addLimitUser(order.getSeckillActivityId(), order.getUserId());
                 LOG.log("添加限选用户成功");
-                if (ret) {
-                    seckillOrderMapper.insert(order);
-                    LOG.log("创建订单成功");
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -30,10 +30,17 @@ public class SeckillOversellServiceImpl implements SeckillOversellService {
     private final SnowFlake snowFlake = new SnowFlake(1, 1);
 
     @Override
-    public Boolean stockDeductVaildator(Long activityId) {
-        // 通过Jedis连接池锁定库存
-        Boolean result = redisService.stockDeductVaildator(activityId);
-        return result;
+    public Boolean stockDeductVaildator(Long activityId, Long memberId) {
+        // 检查该用户是否为限选用户
+        Boolean isLimit = redisService.isLimitMember(activityId, memberId);
+        Boolean isSeckill = false;
+        if (!isLimit) {
+            // 通过Jedis连接池锁定库存
+            isSeckill = redisService.stockDeductVaildator(activityId);
+        } else {
+            LOG.log("该用户已经秒杀过了，不能再秒杀");
+        }
+        return isSeckill;
     }
 
     /**

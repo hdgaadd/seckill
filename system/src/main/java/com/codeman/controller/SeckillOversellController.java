@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 */
 @Api(tags = "秒杀")
 @RestController
-@RequestMapping("/")
+@RequestMapping("/seckill")
 // oversale售空[ˌəʊvəˈsel]
 public class SeckillOversellController {
     @Resource
@@ -24,13 +24,13 @@ public class SeckillOversellController {
 
     @GetMapping("/stockDeductVaildator/{activityId}")
     @ApiOperation("秒杀，创建订单，返回订单编号")
-    public String stockDeductVaildator(@PathVariable Long activityId, Long userId) throws Exception {
-        Boolean result = seckillOversellService.stockDeductVaildator(activityId);
+    public String stockDeductVaildator(@PathVariable Long activityId, Long memberId) throws Exception {
+        Boolean result = seckillOversellService.stockDeductVaildator(activityId, memberId);
         String orderCode = null;
         if (result) {
-            orderCode = seckillOversellService.createOrder(activityId, userId);
+            orderCode = seckillOversellService.createOrder(activityId, memberId);
         }
-        return orderCode != null ? "秒杀成功，订单编号为：" + orderCode : "秒杀失败，库存不足";
+        return orderCode != null ? "秒杀成功，订单编号为：" + orderCode : "秒杀失败，库存不足或您已经秒杀过了";
     }
 
 }
