@@ -33,7 +33,7 @@ public class SeckillOversellController {
     @Resource
     private SeckillOversellService seckillOversellService;
 
-    @GetMapping("/stockDeductVaildator/{activityId}")
+    @GetMapping("/stockDeductVaildator/{activityId}/{activityId}")
     @ApiOperation("根据活动id，秒杀，创建订单，返回订单编号")
     public String stockDeductVaildator(@PathVariable Long activityId, Long memberId) throws Exception {
         try (Entry entry = SphU.entry("seckillResource")) {
