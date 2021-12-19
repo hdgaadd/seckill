@@ -17,8 +17,8 @@ public interface SeckillOversellService {
     /**
      * 秒杀成功后，创建订单
      * @param activityId
-     * @param userId
+     * @param memberId
      * @return
      */
-    String createOrder(Long activityId, Long userId) throws Exception;
+    String createOrder(Long activityId, Long memberId) throws Exception;
 }

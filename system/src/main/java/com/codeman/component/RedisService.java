@@ -68,14 +68,14 @@ public class RedisService {
     }
 
     /**
-     * 把该活动id+用户id作为key，加入到Jedis连接池里，作为限选用户
+     * 把该用户id作为key，加入到Jedis连接池里，作为限选用户
      * @param seckillActivityId
      * @param userId
      * @return
      */
     public Boolean addLimitUser(Long seckillActivityId, Long userId) {
         Jedis resource = jedisPool.getResource();
-        resource.sadd(LIMITUSER.toString()  + seckillActivityId,  String.valueOf(userId));
+        resource.sadd(LIMITUSER.toString()  + userId,  String.valueOf(userId));
         resource.close();
         LOG.log("添加限选用户成功");
         return true;
@@ -98,7 +98,7 @@ public class RedisService {
      */
     public void removeLimitMember(SeckillOrder order) {
         Jedis resource = jedisPool.getResource();
-        resource.srem(LIMITUSER.toString() + order.getSeckillActivityId(), String.valueOf(order.getUserId()));
+        resource.srem(LIMITUSER.toString() + order.getUserId(), String.valueOf(order.getUserId()));
         LOG.log("解除用户限选状态成功");
         resource.close();
     }
@@ -110,7 +110,7 @@ public class RedisService {
      */
     public Boolean isLimitMember(Long activityId, Long memberId) {
         Jedis resource = jedisPool.getResource();
-        Boolean isLimit = resource.sismember(LIMITUSER.toString() + activityId, String.valueOf(memberId));
+        Boolean isLimit = resource.sismember(LIMITUSER.toString() + memberId, String.valueOf(memberId));
         LOG.log("检查用户是否限选成功");
         return isLimit;
     }

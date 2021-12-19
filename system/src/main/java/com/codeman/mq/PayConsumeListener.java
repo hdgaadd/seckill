@@ -32,6 +32,10 @@ public class PayConsumeListener implements RocketMQListener<MessageExt> {
         try {
             String message = new String(messageExt.getBody(), StandardCharsets.UTF_8);
             SeckillOrder order = JSON.parseObject(message, SeckillOrder.class);
+            if (order == null) {
+                LOG.log("该订单为null");
+                return;
+            }
             // 支付成功，更新数据库库存
             rocketmqService.deductStock(order.getSeckillActivityId()); // [dɪˈdʌkt]
         } catch (Exception e) {

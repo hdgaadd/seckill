@@ -41,6 +41,10 @@ public class OrderConsumeListener implements RocketMQListener<MessageExt> {
             String message = new String(messageExt.getBody(), StandardCharsets.UTF_8);
             LOG.log("接收到消息");
             SeckillOrder order = JSON.parseObject(message, SeckillOrder.class);
+            if (order == null) {
+                LOG.log("该订单为null");
+                return;
+            }
             // 更新数据库，限定库存+1，可用库存-1
             int result =  rocketmqService.updateOrder(order.getSeckillActivityId());
             if (result > 0) {

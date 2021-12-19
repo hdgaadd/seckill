@@ -41,11 +41,17 @@ public class PayCheckConsumeListener implements RocketMQListener<MessageExt> {
             LOG.log("检查订单支付状态开始");
             String message = new String(messageExt.getBody(), StandardCharsets.UTF_8);
             SeckillOrder oldOrder = JSON.parseObject(message, SeckillOrder.class);
+            if (oldOrder == null) {
+                LOG.log("该订单为null");
+                return;
+            }
             // 根据先前的订单编号，获取此时最新的该订单，或许该订单已经支付更新状态了
             SeckillOrder order = seckillOrderMapper.selectOne(new QueryWrapper<SeckillOrder>().eq("code", oldOrder.getCode()));
             LOG.log("订单的状态为", order.getOrderStatus());
             if (order.getOrderStatus() != 2) {
                 order.setOrderStatus(3);
+                // 更新订单状态
+                seckillOrderMapper.updateById(order);
                 // 订单超时，更新数据库库存
                 rocketmqService.revertDataBase(order);
                 // 订单超时，更新Redis库存
