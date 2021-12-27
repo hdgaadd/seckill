@@ -1,10 +1,9 @@
 package com.codeman.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.codeman.domain.SeckillActivity;
 import com.codeman.mapper.SeckillActivityMapper;
-import com.codeman.service.ISeckillActivityService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
+import com.codeman.service.OldSeckillActivityService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,7 +17,7 @@ import javax.annotation.Resource;
  * @since 2021-12-09
  */
 @Service
-public class SeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMapper, SeckillActivity> implements ISeckillActivityService {
+public class OldSeckillActivityServiceImpl extends ServiceImpl<SeckillActivityMapper, SeckillActivity> implements OldSeckillActivityService {
     @Resource
     private SeckillActivityMapper seckillActivityMapper;
     static int count = 0;

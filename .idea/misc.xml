@@ -9,6 +9,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/mq/pom.xml" />
+        <option value="$PROJECT_DIR$/template/pom.xml" />
+        <option value="$PROJECT_DIR$/util/pom.xml" />
       </set>
     </option>
   </component>

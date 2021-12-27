@@ -4,8 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-        <module>template</module>
-		<module>util</module>
 		<module>repository</module>
 		<module>system</module>
         <module>common</module>
@@ -48,7 +46,6 @@
 			<artifactId>mybatis-plus-boot-starter</artifactId>
 			<version>3.4.1</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -104,10 +101,10 @@
 	
 	<build>
 		<plugins>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+			</plugin>-->
 		</plugins>
 
 		<!--生产xml-->

@@ -2,7 +2,6 @@ package com.codeman.controller;
 
 import com.codeman.domain.SeckillActivity;
 import com.codeman.service.SeckillActivityService;
-import com.codeman.service.SeckillOversellService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

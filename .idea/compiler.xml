@@ -9,9 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="system" />
         <module name="common" />
-        <module name="template" />
         <module name="repository" />
-        <module name="util" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
