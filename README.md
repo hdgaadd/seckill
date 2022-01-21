@@ -2,15 +2,16 @@
 
 | dependency    | version |
 | :------------ | ------- |
-| JDK           | 8       |
+| JDK           | 8.0     |
 | RocketMQ      | 4.9.1   |
 | Redis         | 5.0.14  |
+| Sentinel      | 1.8.0   |
 | SpringBoot    | 2.5.2   |
 | Mybatis-Plus  | 3.4.1   |
 | apache-jmeter | 5.4.1   |
 | apache-maven  | 3.2.5   |
 
-
+# 
 
 # database design
 
@@ -42,7 +43,7 @@
 
 **UML**
 
- ![seckill](./dp/seckill.png)
+ ![seckill](https://codeman666.oss-cn-beijing.aliyuncs.com/GitHub/seckill/seckill.png)
 
 **table update**
 

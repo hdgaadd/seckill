@@ -1,6 +1,6 @@
 package constant;
 
-//成败信息类型2
+// 成败信息类型2
 public enum ResultCode {
     SUCCESS(1, "successful"),
     FAIL(0, "fail");

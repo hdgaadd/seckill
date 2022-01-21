@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 
 @NoArgsConstructor
-@AllArgsConstructor//添加有参构造方法，参数为所有参数
+@AllArgsConstructor // 添加有参构造方法，参数为所有参数
 @Data
 public class R<T> implements Serializable {
 
