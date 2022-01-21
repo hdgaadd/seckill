@@ -1,3 +1,17 @@
+# choosing technology
+
+| dependency    | version |
+| :------------ | ------- |
+| JDK           | 8       |
+| RocketMQ      | 4.9.1   |
+| Redis         | 5.0.14  |
+| SpringBoot    | 2.5.2   |
+| Mybatis-Plus  | 3.4.1   |
+| apache-jmeter | 5.4.1   |
+| apache-maven  | 3.2.5   |
+
+
+
 # database design
 
 **table design**
