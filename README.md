@@ -28,7 +28,7 @@
 
 **UML**
 
- ![seckill](D:/Users/win/Desktop/note/images/seckill.png)
+ ![seckill](./dp/seckill.png)
 
 **table update**
 
