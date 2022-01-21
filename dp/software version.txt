@@ -1,0 +1,4 @@
+jdk8
+apache-jmeter-5.4.1
+Redis-x64-5.0.14
+rocketmq-all-4.4.0-bin-release
