@@ -71,6 +71,7 @@ public class SeckillOversellServiceImpl implements SeckillOversellService {
 
     private Boolean sentRocketMQ(SeckillOrder seckillOrder) throws Exception {
         rocketMQService.sendMessage("createOrder", JSON.toJSONString(seckillOrder));
+        // 创建延迟消息，检查订单是否支付
         rocketMQService.sendMessage("pay_check", JSON.toJSONString(seckillOrder), 4);
         return true;
     }
